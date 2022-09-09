@@ -4,7 +4,7 @@
 //1 -3,3 8 -9,9
 //8 7,8 -7,1 9
 
-double[,] CreateRandom2DArray(int rows, int cols, double min, double max){
+/* double[,] CreateRandom2DArray(int rows, int cols, double min, double max){
     double[,] array = new double[rows, cols];
     for(int i = 0 ; i <rows; i++){
         for(int j = 0; j<cols; j++){
@@ -18,8 +18,8 @@ double[,] CreateRandom2DArray(int rows, int cols, double min, double max){
 
 void Show2dArray(double[,] array){
     for (int i = 0; i < array.GetLength(0); i++)
-    {   Console.WriteLine();
-        for (int j = 0; j < array.GetLength(0); j++)
+    {  
+        for (int j = 0; j < array.GetLength(1); j++)
         {
             Console.Write(array[i,j]+" ");
         }
@@ -38,7 +38,7 @@ double max = Convert.ToDouble(Console.ReadLine());
 double[,] array = CreateRandom2DArray(rows, cols, min, max);
 
 Show2dArray(array);
-
+ */
 
 
 
@@ -63,3 +63,59 @@ Show2dArray(array);
 //5 9 2 3
 //8 4 2 4
 //Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+
+int[,] CreateRandom2DArray(int rows, int cols, int min, int max){
+    int[,] array = new int[rows, cols];
+    for(int i = 0 ; i <rows; i++){
+        for(int j = 0; j<cols; j++){
+            array[i,j] = new Random().Next(min,max+1);
+        }
+    }
+    return array;
+}
+
+void Show2dArray(int[,] array){
+    for (int i = 0; i < array.GetLength(0); i++)
+    {   
+        Console.WriteLine();
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i,j]+" ");
+        }
+    }
+}
+
+
+
+void ShowSrednee(int[,] array){
+    
+    double srednee = 0;
+    Console.Write($"Среднее арифметическое ");
+    for (int rows = 0; rows < array.GetLength(0); rows++)
+    {   
+        for ( int cols = 0; cols < array.GetLength(1); cols++)
+        {
+            if (rows==cols){
+            srednee = srednee + array[rows,cols];
+
+             Console.Write($" "+srednee+"  ");
+            }
+        }
+    }
+}
+
+
+Console.Write("Input numb of rows: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input numb of cols: ");
+int cols = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input numb of min: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input numb of max: ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+int[,] array = CreateRandom2DArray(rows, cols, min, max);
+
+Show2dArray(array);
+Console.WriteLine();
+ShowSrednee(array);
