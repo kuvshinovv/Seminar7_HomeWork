@@ -57,13 +57,84 @@ Show2dArray(array);
 //1 7 -> такого числа в массиве нет
 
 
+int[,] CreateRandom2DArray(int rows, int cols, int min, int max){
+    int[,] array = new int[rows, cols];
+    for(int i = 0 ; i <rows; i++){
+        for(int j = 0; j<cols; j++){
+            array[i,j] = new Random().Next(min,max+1);
+        }
+    }
+    return array;
+}
+
+void Show2dArray(int[,] array){
+    for (int i = 0; i < array.GetLength(0); i++)
+    {   Console.WriteLine();
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i,j]+" ");
+        }
+    }
+}
+
+void Check(int[,] array, int rows, int cols, int indexRows, int indexCols){
+    if(indexRows > rows || indexCols > cols){
+        Console.WriteLine("такого числа в массиве нет!");
+    }
+    else{
+        Console.WriteLine("Значение элемента в матрице = "+array[indexRows,indexCols]);
+    }
+}
+
+Console.Write("Введите количество строк: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите количество столбцов: ");
+int cols = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение минимального элемента: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите число максимального элемента: ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+int[,] array = CreateRandom2DArray(rows, cols, min, max);
+Show2dArray(array); 
+Console.WriteLine();
+Console.Write("Введите индекс строки: ");
+int indexRows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите индекс столбца: ");
+int indexCols = Convert.ToInt32(Console.ReadLine());
+
+Check(array, rows, cols, indexRows, indexCols);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 //Например, задан массив:
 //1 4 7 2
 //5 9 2 3
 //8 4 2 4
 //Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
-
+/* 
 int[,] CreateRandom2DArray(int rows, int cols, int min, int max){
     int[,] array = new int[rows, cols];
     for(int i = 0 ; i <rows; i++){
@@ -120,4 +191,4 @@ Console.WriteLine();
 Console.WriteLine("среднее арифметическое элементов в каждом столбце: ");
 ShowSrednee(array);
 
- 
+  */
